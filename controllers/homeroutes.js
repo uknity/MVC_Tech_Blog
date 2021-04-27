@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     });
 
     //serialize the data so the template can read it
-    const posts = Posts.map((post) =>
+    const posts = postData.map((post) =>
       post.get({ plain: true })
     );
 
@@ -55,7 +55,7 @@ router.get('/posts/:id', async (req, res) => {
   }
 });
 
-//Use withAuth middlewar to prevent access to route
+//Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPK(req.session.user_id, {
