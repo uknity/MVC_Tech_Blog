@@ -11,6 +11,10 @@ router.get('/', async (req, res) => {
           model: Comments,
           attributes: ['name', 'description'],
         },
+        {
+          model: User,
+          attributes: ['name'],
+        },
       ],
     });
 
@@ -18,10 +22,13 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) =>
       post.get({ plain: true })
     );
+      
 
     //pass serialized data and session flag into the template
+    console.log(posts);
+    
     res.render('homepage', {
-      ...posts,
+      posts,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -58,7 +65,7 @@ router.get('/posts/:id', async (req, res) => {
 //Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPK(req.session.user_id, {
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Posts }],
     });
@@ -70,6 +77,7 @@ router.get('/profile', withAuth, async (req, res) => {
       logged_in: true
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
