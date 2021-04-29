@@ -1,13 +1,12 @@
 [
-    {
-      "name": "Jean",
-      "description": "This post helped a lot.  Thank you."
-      "post_id": "1"
-    },
-    {
-        "name": "Barbara",
-        "description": "Wow!  Thanks!"
-        "post_id": "2"
-      }
-  ]
-  
+  {
+    "description": "This post helped a lot.  Thank you.",
+    "user_id": 2,
+    "post_id": 2
+  },
+  {
+    "description": "Wow!  Thanks!",
+    "user_id": 1,
+    "post_id": 1
+  }
+]

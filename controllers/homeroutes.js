@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: Comments,
-          attributes: ['name', 'description'],
+          attributes: ['description'],
         },
         {
           model: User,
@@ -45,23 +45,28 @@ router.get('/posts/:id', async (req, res) => {
         {
           model: Comments,
           attributes: [
-            'id',
-            'name',
             'description',
-            'date_created',
+            'createdAt',
+            'user_id'
           ],
+          include: {
+            model: User,
+            attributes: [
+              'name'
+            ]
+          }
         },
         {
           model: User,
           attributes: [
-            'id',
-            'name'
+            'name',
           ]
         }
       ],
     });
 
     const post = postData.get({ plain: true });
+    console.log(JSON.stringify(post, null, 1));
     res.render('post', { ...post, logged_in: req.session.logged_in });
   } catch (err) {
     console.log(err);

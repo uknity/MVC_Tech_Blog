@@ -2,14 +2,16 @@
   <h2>{{title}}</h2>
   <p>{{{get_emoji}}}</p>
   <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>Created by {{user.name}} on {{format_date createdAt}}</p>
 </div>
 
+{{#each comments as |comment| }}
 <div>
   <h2>Comments:</h2>
   <p>{{comment.description}}</p>
-  <p>Commented by {{comment.name}} on </p>
+  <p>Commented by {{comment.user.name}} on {{format_date comment.createdAt}}</p>
 </div>
+{{/each}}
 
 {{!-- how does it know where to find name, get_emoji, description, user.nam, format_dat? --}}
 
