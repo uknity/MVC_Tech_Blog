@@ -51,6 +51,13 @@ router.get('/posts/:id', async (req, res) => {
             'date_created',
           ],
         },
+        {
+          model: User,
+          attributes: [
+            'id',
+            'name'
+          ]
+        }
       ],
     });
 

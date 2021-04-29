@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Posts } = require('../../models');
+const { Posts, Comments } = require('../../models');
 const withAuth = require('../../utils/auth');
+
 
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -14,6 +15,7 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
