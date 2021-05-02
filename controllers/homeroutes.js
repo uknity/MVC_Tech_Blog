@@ -8,10 +8,6 @@ router.get('/', async (req, res) => {
     const postData = await Posts.findAll({
       include: [
         {
-          model: Comments,
-          attributes: ['description'],
-        },
-        {
           model: User,
           attributes: ['name'],
         },
@@ -20,14 +16,10 @@ router.get('/', async (req, res) => {
 
     //serialize the data so the template can read it
     const posts = postData.map((post) =>
-      post.get({ plain: true })
-    );
-      
+      post.get({ plain: true }));
 
     //pass serialized data and session flag into the template
-    console.log(posts);
-    
-    res.render('homepage', {
+      res.render('homepage', {
       posts,
       logged_in: req.session.logged_in
     });
@@ -49,25 +41,23 @@ router.get('/posts/:id', async (req, res) => {
             'createdAt',
             'user_id'
           ],
-          include: {
-            model: User,
-            attributes: [
-              'name'
-            ]
-          }
         },
         {
-          model: User,
-          attributes: [
-            'name',
-          ]
-        }
-      ],
+            model: User,
+            attributes: ['name'],
+          }
+        ],
     });
+      
+    console.log(postData);
 
     const post = postData.get({ plain: true });
-    console.log(JSON.stringify(post, null, 1));
-    res.render('post', { ...post, logged_in: req.session.logged_in });
+    // JSON.stringify(post, null, 1);
+    res.render('post', { 
+      ...post, 
+      logged_in: req.session.logged_in 
+    });
+  
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

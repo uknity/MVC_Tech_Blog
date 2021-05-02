@@ -8,5 +8,10 @@
     "description": "Wow!  Thanks!",
     "user_id": 1,
     "post_id": 1
+  },
+  {
+    "description": "I didn't know that.",
+    "user_id": 1,
+    "post_id": 3
   }
 ]

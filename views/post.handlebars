@@ -13,7 +13,19 @@
 </div>
 {{/each}}
 
-{{!-- how does it know where to find name, get_emoji, description, user.nam, format_dat? --}}
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Comment:</h3>
 
-{{!-- format_date --> comes from helpers - why not 3 brackets? --}}
-{{!-- get_emoji --> comes from helpers --}}
+    <form class="form new-comment-form">
+      <div class="form-group">
+        <label for="comment-desc">Comment:</label>
+        <textarea class="form-input" id="comment-desc" name="comment-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/public/js/comment.js"></script>
