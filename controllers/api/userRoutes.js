@@ -3,8 +3,8 @@ const { User } = require('../../models');
 
 //create a new user
 router.post('/', async (req, res) => {
-  console.log(req.body);
-  console.log("you're in api user sign up/ to create a post");
+  // console.log(req.body);
+  // console.log("you're in api user sign up/ to create a post");
   try {
     const userData = await User.create({
       name: req.body.name,
@@ -26,10 +26,10 @@ router.post('/', async (req, res) => {
 
 //login route
 router.post('/login', async (req, res) => {
-  console.log('you are in the api user login route');
+  // console.log('you are in the api user login route');
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
-    console.log(userData);
+    // console.log(userData);
 
     if (!userData) {
       res
@@ -49,11 +49,11 @@ router.post('/login', async (req, res) => {
 
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
-      console.log('Im in req.session.save');
+      // console.log('Im in req.session.save');
       req.session.user_id = userData.user_id;
       req.session.logged_in = true;
-      console.log(userData.user_id);
-      console.log(req.session.user_id);
+      // console.log(userData.user_id);
+      // console.log(req.session.user_id);
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
 
 //logout route
 router.post('/logout', (req, res) => {
-  console.log('You made it to the logout function');
+  // console.log('You made it to the logout function');
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
