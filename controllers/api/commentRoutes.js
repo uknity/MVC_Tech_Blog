@@ -1,12 +1,14 @@
 const router = require('express').Router();
 const { Comment, Posts } = require('../../models');
 
-
-router.post('/', async (req, res) => {
+//post new comment by id
+router.post('/:id', async (req, res) => {
   console.log('you are in the post comment api route');
+  const post_id = req.params.id;
   try {
     const newComment = await Comment.create({
       ...req.body,
+      post_id,
       user_id: req.session.user_id,
     });
     // console.log('new comment', newComment);
@@ -16,6 +18,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+//delete comment by id
 router.delete('/:id', async (req, res) => {
   try {
     const commentData = await Comment.destroy({

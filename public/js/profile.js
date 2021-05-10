@@ -1,9 +1,9 @@
+//form handler for creating a new post
 const newFormHandler = async (event) => {
   event.preventDefault();
 
   const title = document.querySelector('#post-title').value.trim();
   const description = document.querySelector('#post-desc').value.trim();
-
   if (title && description) {
     const response = await fetch(`/api/posts`, {
       method: 'POST',
@@ -22,25 +22,30 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/posts/${id}`, {
+  event.preventDefault();
+  console.log('you are in delete button handler');
+  
+  const post_id = event.target.getAttribute('data-id');
+  
+  // const deleteButton = document.querySelector('#deleteBut');
+  // const post_id = deleteButton.getAttribute('data-id');
+  console.log(post_id);
+    const response = await fetch(`/api/posts/${post_id}`, {
       method: 'DELETE',
     });
 
     if (response.ok) {
+      document.location.reload();
       document.location.replace('/profile');
     } else {
       alert('Failed to delete post');
     }
-  }
-};
+  };
 
 document
   .querySelector('.new-post-form')
   .addEventListener('submit', newFormHandler);
 
 document
-  .querySelector('.post-list')
+  .querySelector('.deleteBut')
   .addEventListener('click', delButtonHandler);
