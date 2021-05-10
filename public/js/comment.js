@@ -8,23 +8,15 @@ const addCommentFormHandler = async (event) => {
   const post_id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
-  const user_id = req.session.user_id;
-
+  
   const description = document.querySelector('#comment-desc').value.trim();
+
+  const user_id = req.session.user_id;
 
   console.log(description);
 
   if (description) {
-    const response = await fetch(`/api/comments`, {
-      method: 'POST',
-      body: JSON.stringify({ description,  }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-
-  
+      
   const response = await fetch(`/api/comments/${post_id}`, {
     method: 'POST',
     body: JSON.stringify({
@@ -79,3 +71,12 @@ document.querySelector('#new-comment-form').addEventListener('submit', addCommen
 // document
 //   .querySelector('.new-comment-form')
 //   .addEventListener('submit', newCommentFormHandler);
+
+// const response = await fetch(`/api/comments`, {
+//   method: 'POST',
+//   body: JSON.stringify({ description,  }),
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
+// }
