@@ -1,7 +1,33 @@
-header, .post:not(:last-child) {
+
+nav {
   border-bottom: 1px solid #ccc;
+  height: 200px;
+  background-color: #000f07;
+background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);
+justify-content: flex-start;
 }
 
+#navContent {
+  display: flex;
+  
+  justify-content: flex-start;
+}
+
+
+nav a {
+  color: white;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 200%;
+  padding: 30px;
+}
+
+a {
+  color: #3a3c40;
+}
+img {
+  max-width: 10%;
+  height: auto;
+}
 .no-button {
   background: none;
   border: none;
