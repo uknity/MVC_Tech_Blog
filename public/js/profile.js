@@ -21,15 +21,12 @@ const newFormHandler = async (event) => {
   }
 };
 
+//form handler for deleting a post
 const delButtonHandler = async (event) => {
   event.preventDefault();
   console.log('you are in delete button handler');
   
   const post_id = event.target.getAttribute('data-id');
-  
-  // const deleteButton = document.querySelector('#deleteBut');
-  // const post_id = deleteButton.getAttribute('data-id');
-  console.log(post_id);
     const response = await fetch(`/api/posts/${post_id}`, {
       method: 'DELETE',
     });

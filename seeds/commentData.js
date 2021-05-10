@@ -13,6 +13,5 @@ const commentData = [
     post_id: 1,
   }
 ];
-console.log(commentData);
 const seedComments = () => Comment.Create(commentData);
 module.exports = commentData;

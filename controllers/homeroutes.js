@@ -49,10 +49,7 @@ router.get('/posts/:id', async (req, res) => {
         ],
     });
       
-    // console.log(postData);
-
     const post = postData.get({ plain: true });
-    // JSON.stringify(post, null, 1);
     console.log(post);
     res.render('post', { 
       ...post, 
