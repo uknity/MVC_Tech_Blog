@@ -1,3 +1,4 @@
+//form to handle site login
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -7,7 +8,8 @@ const loginFormHandler = async (event) => {
 
   if (email && password) {
     // Send a POST request to the API endpoint
-    const response = await fetch('/api/users/login', {
+    console.log('there is an email and password');
+    const response = await fetch('/api/user/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -16,8 +18,11 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
+      console.log("made it through login js");
     } else {
-      alert(response.statusText);
+      console.log(response.statusText);
+      alert('Failed to log in');
+      
     }
   }
 };
@@ -30,7 +35,7 @@ const signupFormHandler = async (event) => {
   const password = document.querySelector('#password-signup').value.trim();
 
   if (name && email && password) {
-    const response = await fetch('/api/users', {
+    const response = await fetch('/api/user/', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -38,8 +43,10 @@ const signupFormHandler = async (event) => {
 
     if (response.ok) {
       document.location.replace('/profile');
+      console.log("You made it through sign-up");
     } else {
-      alert(response.statusText);
+      alert('Sign-up failed.  Please try again.');
+      console.log(response.statusText);
     }
   }
 };

@@ -1,21 +1,22 @@
 const router = require('express').Router();
 const { Comment, Post } = require('../../models');
-const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+
+router.post('/', async (req, res) => {
+  console.log('you are in the post comment api route');
   try {
     const newComment = await Comment.create({
       ...req.body,
       user_id: req.session.user_id,
     });
-
+    console.log('new comment', newComment);
     res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const commentData = await Comment.destroy({
       where: {

@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Posts, User, Comments } = require('../models');
-const withAuth = require('../utils/auth');
+const { Posts, User, Comment } = require('../models');
 
 // GET all posts for homepage
 router.get('/', async (req, res) => {
@@ -35,7 +34,7 @@ router.get('/posts/:id', async (req, res) => {
     const postData = await Posts.findByPk(req.params.id, {
       include: [
         {
-          model: Comments,
+          model: Comment,
           attributes: [
             'description',
             'createdAt',
@@ -65,7 +64,9 @@ router.get('/posts/:id', async (req, res) => {
 });
 
 //Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/profile', async (req, res) => {
+  console.log('You are in user /profile route');
+  console.log(req.session.user_id);
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
@@ -84,8 +85,9 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+//login user route
 router.get('/login', (req, res) => {
-
+console.log('you made it to homeroutes login');
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;

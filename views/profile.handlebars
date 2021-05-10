@@ -30,10 +30,10 @@
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/posts/{{post.id}}">{{post.title}}</a></h4>
+        <h4><a href="/posts/{{post.post_id}}">{{post.title}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{post.post_id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
@@ -41,4 +41,4 @@
   {{/if}}
 </div>
 
-<script src="./js/profile.js"></script>
+<script src="/public/js/profile.js" ></script>

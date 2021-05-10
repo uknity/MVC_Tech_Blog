@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+
 require('dotenv').config();
 
 // How does this relate to the .env file, is this our mysql login?

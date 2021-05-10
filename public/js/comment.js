@@ -2,22 +2,22 @@
 
 const newFormHandler = async (event) => {
   event.preventDefault();
-
+  
   const description = document.querySelector('#comment-desc').value;
   //or querySelector tenant id from handlebars pg.
 
 // window.location gives us access to the URL. We then use the .split() method to access the number at the end of the URL and set that equal to id.
-  const id = window.location.toString().split('/')[
+  const post_id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
+  const user_id = req.session.user_id;
   
-  const response = await fetch(`/api/comments/${id}`, {
+  const response = await fetch(`/api/comments/${post_id}`, {
     method: 'POST',
     body: JSON.stringify({
-      tenantFirstName,
-      tenantLastName,
-      phone,
-      emerContact,
+      description,
+      user_id,
+      post_id,
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -26,9 +26,9 @@ const newFormHandler = async (event) => {
 
   if (response.ok) {
     //redirect to `/view_tenant/${id}`
-    document.location.replace(`/view_tenant/${id}`);
+    document.location.replace(`/posts/${post_id}`);
   } else {
-    alert('Failed to edit tenant');
+    alert('Failed to add comment');
   }
 }
 
