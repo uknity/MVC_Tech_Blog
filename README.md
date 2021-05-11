@@ -17,7 +17,7 @@ _____________________________________________________
   - [License](#license)
 ______________________________________________________
 
-![image](https://user-images.githubusercontent.com/77338531/117726960-606ec080-b1b5-11eb-8812-8f16df73d1c7.png)
+![image](https://user-images.githubusercontent.com/77338531/117738719-b9951f00-b1ca-11eb-81b2-30d9fefbb9ee.png)
 
 Heroku Deployed URL:  https://immense-cove-53002.herokuapp.com/  
 GitHub Repository URL:  https://github.com/uknity/MVC_Tech_Blog  
