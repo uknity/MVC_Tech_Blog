@@ -28,6 +28,14 @@ img {
   max-width: 10%;
   height: auto;
 }
+
+#logout {
+  color: white;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 200%;
+  padding: 30px;
+}
+
 .no-button {
   background: none;
   border: none;
