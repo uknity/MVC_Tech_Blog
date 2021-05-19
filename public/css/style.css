@@ -1,10 +1,24 @@
 
 nav {
   border-bottom: 1px solid #ccc;
-  height: 200px;
+  height: 300px;
   background-color: #000f07;
-background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);
-justify-content: flex-start;
+  
+}
+nav::before {    
+  content: "";
+  background-image: url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+  
+  position: absolute; 
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.50;
+}
+
+nav image {
+  opacity: 0.5;
 }
 
 #navContent {
@@ -27,6 +41,7 @@ a {
 img {
   max-width: 10%;
   height: auto;
+  opacity: 0.5;
 }
 
 #logout {
